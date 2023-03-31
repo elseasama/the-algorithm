@@ -244,7 +244,24 @@ object HomeTweetTypePredicates {
         candidate
           .getOrElse(AuthorIdFeature, None)
           .exists(candidate.getOrElse(DDGStatsRepublicansFeature, Set.empty[Long]).contains)),
+    (
+      "author_is_dmk",
+      candidate =>
+        candidate
+          .getOrElse(AuthorIdFeature, None)
+          .exists(candidate.getOrElse(DDGStatsDmkFeature, Set.empty[Long]).contains)),
+      "author_is_aiadmk",
+      candidate =>
+        candidate
+          .getOrElse(AuthorIdFeature, None)
+          .exists(candidate.getOrElse(DDGStatsAiadmkFeature, Set.empty[Long]).contains)),
+      "author_is_vck",
+      candidate =>
+        candidate
+          .getOrElse(AuthorIdFeature, None)
+          .exists(candidate.getOrElse(DDGStatsVckFeature, Set.empty[Long]).contains)),
   )
+  
 
   val PredicateMap = CandidatePredicates.toMap
 }
